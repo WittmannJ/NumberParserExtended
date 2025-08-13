@@ -7,4 +7,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StringNormalizer\StringNormalizer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="NumberParserExtended.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
