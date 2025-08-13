@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NumberParserExtended.Logic\NumberParserExtended.Logic.csproj" />
     <ProjectReference Include="..\StringNormalizer\StringNormalizer.csproj" />
   </ItemGroup>
 
