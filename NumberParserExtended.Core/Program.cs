@@ -6,7 +6,7 @@ using static NumberParserExtended.Logic.MatrixHelper;
 var filename = "NumberParserExtended.txt";
 
 string contents = File.ReadAllText(filename);
-Console.WriteLine(contents);
+
 
 // find line with the longest line length aka the most characters
 // -> use this line to replace the tabstops correctly => does not work anymore if there are more
@@ -21,10 +21,6 @@ for (int i = 0; i < lines.Length; i++)
     newLines[i] = ReplaceTabstopsInStringWithWhitespaces(lines[i]);
 }
 
-foreach(var line in newLines)
-{
-    Console.WriteLine(line);
-}
 
 // next step: make all lines have the same length via padding => easier to work with when using 2d arrays
 
@@ -67,16 +63,11 @@ for(int i = 0; i < longestNumberOfChars; i++)
 
 var listOfNumberArrays = ExtractNumbersAsSubArrays(newLinesChar);
 
+// classify each subArray into a number
 
+var results = classifySubArraysIntoNumbers(listOfNumberArrays);
 
-
-
-
-
-
-
-
-foreach (var line in newLines)
+for(int i = 0; i < results.Length; i++)
 {
-    Console.WriteLine($"{line} - Length: {line.Length}");
+    Console.WriteLine(results[i]);
 }

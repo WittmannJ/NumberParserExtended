@@ -66,6 +66,56 @@
             return listOfNumberArrays;
         }
 
+        public static int CountOccurencesOfCharacterInArray(char[] arrayToSearch, char characterToCount)
+        {
+            int occurencesOfCharacter = 0;
+            for(int i = 0; i < arrayToSearch.Length; i++)
+            {
+                if (arrayToSearch[i] == characterToCount)
+                    occurencesOfCharacter++;
+            }
+            return occurencesOfCharacter;
+        }
+
+        public static int[] classifySubArraysIntoNumbers(List<char[,]> subArraysContainingNumbers)
+        {
+            int[] detectedNumbers = new int[subArraysContainingNumbers.Count];
+            int runner = 0;
+
+            foreach(var subArray in subArraysContainingNumbers)
+            {
+                var detectedNumber = DetectNumberInArray(subArray);
+                detectedNumbers[runner] = detectedNumber;
+                runner++;
+            }
+
+            return detectedNumbers;
+        }
+
+        private static int DetectNumberInArray(char[,] subArray)
+        {
+            // one is the only number with a subarray dimension of [1,4]
+            if (subArray.GetLength(0) == 1)
+                return 1;
+
+            // two is the only number with exactly one underscore
+            if (CountOccurencesOfCharacterInArray(subArray.Cast<char>().ToArray(), '_') == 1) 
+                return 2;
+
+            // three is the only number with a backslash
+            if (CountOccurencesOfCharacterInArray(subArray.Cast<char>().ToArray(), '\\') == 1)
+                return 3;
+
+            // only four contains exactly six |
+            if (CountOccurencesOfCharacterInArray(subArray.Cast<char>().ToArray(), '|') == 6)
+                return 4;
+
+            // default case
+            else
+                return 5;
+
+        }
+
         public static char[,] ConcatenateTwo2DCharArraysHorizontally(char[,] array1, char[,] array2)
         {
             // what is important? => The two arrays should have the same number of rows
